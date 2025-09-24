@@ -1,4 +1,4 @@
-# from typing import Optional, Dict, Any, List
+﻿# from typing import Optional, Dict, Any, List
 # from pydantic import BaseModel, Field
 
 
@@ -286,7 +286,7 @@ class StockResponse(BaseModel):
         examples=["TSHIRT-BLK-M"],
     )
     quantity: int = Field(
-        description="Current computed quantity (IN - OUT ± adjustments).",
+        description="Current computed quantity (IN - OUT Â± adjustments).",
         examples=[48],
     )
     available: bool = Field(
@@ -392,3 +392,4 @@ class VarietiesResponse(BaseModel):
             ]
         }
     }
+

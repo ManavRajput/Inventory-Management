@@ -1,8 +1,11 @@
-from typing import Optional
+﻿from typing import Optional
 
 from app.DB.Sql.db_manager import AsyncDBManager
 from app.DB.repositories.inventory_repo import InventoryRepository
 
+
+# from DB.Sql.db_manager import AsyncDBManager
+# from DB.repositories.inventory_repo import InventoryRepository
 
 class InventoryService:
     def __init__(self, db: AsyncDBManager):
@@ -114,3 +117,4 @@ class InventoryService:
 
     async def search(self, query: str, variety: Optional[str]):
         return await self.repo.search(query, variety)
+

@@ -1,4 +1,4 @@
-import os
+﻿import os
 import json
 import logging
 import hashlib
@@ -117,7 +117,7 @@ class AsyncDBManager:
 
     async def execute_script(self, script_sql: str):
         if self.fallback == "postgres":
-            # Split on ; cautiously – assume DDL safe here
+            # Split on ; cautiously â€“ assume DDL safe here
             async with self.pool.connection() as conn:
                 async with conn.cursor() as cur:
                     for stmt in [s.strip() for s in script_sql.split(";") if s.strip()]:
@@ -154,3 +154,4 @@ class AsyncDBManager:
     def sha256(content: str) -> str:
         import hashlib
         return hashlib.sha256(content.encode("utf-8")).hexdigest()
+

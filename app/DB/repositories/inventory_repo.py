@@ -1,8 +1,8 @@
-import uuid
+﻿import uuid
 from typing import Optional, List, Dict, Any
 
 from app.DB.Sql.db_manager import AsyncDBManager
-
+# from DB.Sql.db_manager import AsyncDBManager
 
 class InventoryRepository:
     def __init__(self, db: AsyncDBManager):
@@ -412,3 +412,4 @@ class InventoryRepository:
 def json_dumps(obj) -> str:
     import json
     return json.dumps(obj, separators=(",", ":"))
+

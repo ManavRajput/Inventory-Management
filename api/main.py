@@ -9,12 +9,45 @@ from app.DB.models.schema import (
     StockResponse, ProductCard, SearchQuery, VarietiesResponse,
     BatchRestockIN, SaleOrderOUT, ProductUpsertBatch
 )
+from fastapi import UploadFile
+import io
+import pandas as pd
 
 logging.basicConfig(level=logging.INFO)
 app = FastAPI(title="Inventory API", version="1.0.0")
 
 db = AsyncDBManager()
 service = InventoryService(db)
+
+
+
+
+def csv_to_api_json(file: UploadFile):
+    import csv, io
+    content = file.file.read().decode("utf-8")
+    reader = csv.DictReader(io.StringIO(content))
+    items = []
+
+    for row in reader:
+        # Map CSV columns to expected dict structure
+        item = {
+            "sku": row.get("sku"),
+            "name": row.get("name"),
+            "variety": row.get("variety"),
+            "price": float(row.get("price", 0)),
+            "attributes": {
+                "brand": row.get("brand"),
+                "color": row.get("color"),
+                "size": row.get("size"),
+            },
+            "is_active": True,
+        }
+        items.append(item)
+
+    return items
+
+
+# Example usage 
 
 
 @app.on_event("startup")
@@ -34,10 +67,26 @@ async def upsert_product(payload: ProductUpsert):
     return {"id": pid, "sku": payload.sku}
 
 
+from fastapi import APIRouter, File, UploadFile, HTTPException, Body
+from typing import Optional
+import pandas as pd
+import io
 
 @app.post("/products/upsert/batch")
-async def upsert_products_batch(payload: ProductUpsertBatch):
-    items = [i.model_dump() for i in payload.items]
+async def upsert_products_batch(
+    file: UploadFile
+):
+    """
+    Accepts either a JSON payload or a CSV/Excel file upload.
+    User must provide exactly one.
+    """
+
+
+    if file:
+        items = csv_to_api_json(file)
+    else:
+        raise HTTPException(status_code=400, detail="No file found. Please upload a CSV or Excel file.")
+
     rows = await service.upsert_products_batch(items)
     return {"count": len(rows), "items": rows}
 
