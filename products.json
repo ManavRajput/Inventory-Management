@@ -1,0 +1,962 @@
+[
+  {
+    "name": "Basmati Rice",
+    "brand": "Tata",
+    "category": "Grocery",
+    "size": "100g",
+    "price": 394,
+    "sku": "GRO-BASMAT-1"
+  },
+  {
+    "name": "Dabur Honey",
+    "brand": "Colgate",
+    "category": "Personal Care",
+    "size": "500g",
+    "price": 55,
+    "sku": "PER-DABURH-2"
+  },
+  {
+    "name": "Wheel Soap Bar",
+    "brand": "Nirma",
+    "category": "Cleaning",
+    "size": "500g",
+    "price": 805,
+    "sku": "CLE-WHEELS-3"
+  },
+  {
+    "name": "Poha",
+    "brand": "India Gate",
+    "category": "Grocery",
+    "size": "500g",
+    "price": 758,
+    "sku": "GRO-POHA-4"
+  },
+  {
+    "name": "Gowardhan Ghee",
+    "brand": "Amul",
+    "category": "Dairy",
+    "size": "250ml",
+    "price": 62,
+    "sku": "DAI-GOWARD-5"
+  },
+  {
+    "name": "Mother Dairy Curd",
+    "brand": "Nestle",
+    "category": "Dairy",
+    "size": "20pcs",
+    "price": 381,
+    "sku": "DAI-MOTHER-6"
+  },
+  {
+    "name": "Surf Excel Detergent",
+    "brand": "Ariel",
+    "category": "Cleaning",
+    "size": "10kg",
+    "price": 309,
+    "sku": "CLE-SURFEX-7"
+  },
+  {
+    "name": "Sprite",
+    "brand": "Frooti",
+    "category": "Beverages",
+    "size": "2L",
+    "price": 959,
+    "sku": "BEV-SPRITE-8"
+  },
+  {
+    "name": "Harpic Toilet Cleaner",
+    "brand": "Surf Excel",
+    "category": "Cleaning",
+    "size": "2L",
+    "price": 508,
+    "sku": "CLE-HARPIC-9"
+  },
+  {
+    "name": "Wheel Soap Bar",
+    "brand": "Nirma",
+    "category": "Cleaning",
+    "size": "5kg",
+    "price": 363,
+    "sku": "CLE-WHEELS-10"
+  },
+  {
+    "name": "Nirma Washing Powder",
+    "brand": "Ariel",
+    "category": "Cleaning",
+    "size": "10kg",
+    "price": 517,
+    "sku": "CLE-NIRMAW-11"
+  },
+  {
+    "name": "Sugar",
+    "brand": "Daawat",
+    "category": "Grocery",
+    "size": "5kg",
+    "price": 571,
+    "sku": "GRO-SUGAR-12"
+  },
+  {
+    "name": "Soan Papdi",
+    "brand": "Bingo",
+    "category": "Snacks",
+    "size": "10kg",
+    "price": 701,
+    "sku": "SNA-SOANPA-13"
+  },
+  {
+    "name": "Clinic Plus Shampoo",
+    "brand": "Patanjali",
+    "category": "Personal Care",
+    "size": "20pcs",
+    "price": 281,
+    "sku": "PER-CLINIC-14"
+  },
+  {
+    "name": "Lifebuoy Soap",
+    "brand": "Patanjali",
+    "category": "Personal Care",
+    "size": "500g",
+    "price": 452,
+    "sku": "PER-LIFEBU-15"
+  },
+  {
+    "name": "Sprite",
+    "brand": "Pepsi",
+    "category": "Beverages",
+    "size": "1kg",
+    "price": 475,
+    "sku": "BEV-SPRITE-16"
+  },
+  {
+    "name": "Lizol Floor Cleaner",
+    "brand": "Nirma",
+    "category": "Cleaning",
+    "size": "500g",
+    "price": 483,
+    "sku": "CLE-LIZOLF-17"
+  },
+  {
+    "name": "Harpic Toilet Cleaner",
+    "brand": "Lizol",
+    "category": "Cleaning",
+    "size": "500g",
+    "price": 855,
+    "sku": "CLE-HARPIC-18"
+  },
+  {
+    "name": "Tropicana Juice",
+    "brand": "Coca-Cola",
+    "category": "Beverages",
+    "size": "10kg",
+    "price": 562,
+    "sku": "BEV-TROPIC-19"
+  },
+  {
+    "name": "Coca-Cola",
+    "brand": "Pepsi",
+    "category": "Beverages",
+    "size": "500ml",
+    "price": 803,
+    "sku": "BEV-COCA-C-20"
+  },
+  {
+    "name": "Dettol Soap",
+    "brand": "Patanjali",
+    "category": "Personal Care",
+    "size": "20pcs",
+    "price": 402,
+    "sku": "PER-DETTOL-21"
+  },
+  {
+    "name": "Closeup Gel",
+    "brand": "Dabur",
+    "category": "Personal Care",
+    "size": "500g",
+    "price": 283,
+    "sku": "PER-CLOSEU-22"
+  },
+  {
+    "name": "Haldiram Bhujia",
+    "brand": "Haldiram's",
+    "category": "Snacks",
+    "size": "20pcs",
+    "price": 79,
+    "sku": "SNA-HALDIR-23"
+  },
+  {
+    "name": "Surf Excel Detergent",
+    "brand": "Lizol",
+    "category": "Cleaning",
+    "size": "10kg",
+    "price": 474,
+    "sku": "CLE-SURFEX-24"
+  },
+  {
+    "name": "Appy Fizz",
+    "brand": "Pepsi",
+    "category": "Beverages",
+    "size": "5L",
+    "price": 30,
+    "sku": "BEV-APPYFI-25"
+  },
+  {
+    "name": "Nirma Washing Powder",
+    "brand": "Harpic",
+    "category": "Cleaning",
+    "size": "100g",
+    "price": 917,
+    "sku": "CLE-NIRMAW-26"
+  },
+  {
+    "name": "Pepsi",
+    "brand": "Frooti",
+    "category": "Beverages",
+    "size": "10pcs",
+    "price": 87,
+    "sku": "BEV-PEPSI-27"
+  },
+  {
+    "name": "Amul Milk",
+    "brand": "Mother Dairy",
+    "category": "Dairy",
+    "size": "10pcs",
+    "price": 406,
+    "sku": "DAI-AMULMI-28"
+  },
+  {
+    "name": "Wheat Flour",
+    "brand": "India Gate",
+    "category": "Grocery",
+    "size": "500g",
+    "price": 396,
+    "sku": "GRO-WHEATF-29"
+  },
+  {
+    "name": "Haldiram Bhujia",
+    "brand": "Bingo",
+    "category": "Snacks",
+    "size": "100g",
+    "price": 842,
+    "sku": "SNA-HALDIR-30"
+  },
+  {
+    "name": "Parle-G Biscuits",
+    "brand": "Parle",
+    "category": "Snacks",
+    "size": "100g",
+    "price": 427,
+    "sku": "SNA-PARLE--31"
+  },
+  {
+    "name": "Red Bull",
+    "brand": "Coca-Cola",
+    "category": "Beverages",
+    "size": "500ml",
+    "price": 659,
+    "sku": "BEV-REDBUL-32"
+  },
+  {
+    "name": "Mustard Oil",
+    "brand": "Fortune",
+    "category": "Grocery",
+    "size": "1kg",
+    "price": 617,
+    "sku": "GRO-MUSTAR-33"
+  },
+  {
+    "name": "Lizol Floor Cleaner",
+    "brand": "Harpic",
+    "category": "Cleaning",
+    "size": "10kg",
+    "price": 864,
+    "sku": "CLE-LIZOLF-34"
+  },
+  {
+    "name": "Frooti",
+    "brand": "Maaza",
+    "category": "Beverages",
+    "size": "5kg",
+    "price": 836,
+    "sku": "BEV-FROOTI-35"
+  },
+  {
+    "name": "Harpic Toilet Cleaner",
+    "brand": "Harpic",
+    "category": "Cleaning",
+    "size": "250ml",
+    "price": 326,
+    "sku": "CLE-HARPIC-36"
+  },
+  {
+    "name": "Good Day Cookies",
+    "brand": "Parle",
+    "category": "Snacks",
+    "size": "250ml",
+    "price": 239,
+    "sku": "SNA-GOODDA-37"
+  },
+  {
+    "name": "Colgate Toothpaste",
+    "brand": "Dabur",
+    "category": "Personal Care",
+    "size": "100g",
+    "price": 717,
+    "sku": "PER-COLGAT-38"
+  },
+  {
+    "name": "Dettol Soap",
+    "brand": "Dettol",
+    "category": "Personal Care",
+    "size": "2L",
+    "price": 813,
+    "sku": "PER-DETTOL-39"
+  },
+  {
+    "name": "Haldiram Bhujia",
+    "brand": "Lays",
+    "category": "Snacks",
+    "size": "10pcs",
+    "price": 737,
+    "sku": "SNA-HALDIR-40"
+  },
+  {
+    "name": "Gowardhan Ghee",
+    "brand": "Nestle",
+    "category": "Dairy",
+    "size": "1kg",
+    "price": 539,
+    "sku": "DAI-GOWARD-41"
+  },
+  {
+    "name": "Gowardhan Ghee",
+    "brand": "Britannia",
+    "category": "Dairy",
+    "size": "5kg",
+    "price": 89,
+    "sku": "DAI-GOWARD-42"
+  },
+  {
+    "name": "Parle-G Biscuits",
+    "brand": "Parle",
+    "category": "Snacks",
+    "size": "500g",
+    "price": 602,
+    "sku": "SNA-PARLE--43"
+  },
+  {
+    "name": "Lifebuoy Soap",
+    "brand": "Lifebuoy",
+    "category": "Personal Care",
+    "size": "200g",
+    "price": 817,
+    "sku": "PER-LIFEBU-44"
+  },
+  {
+    "name": "Nirma Washing Powder",
+    "brand": "Wheel",
+    "category": "Cleaning",
+    "size": "2kg",
+    "price": 502,
+    "sku": "CLE-NIRMAW-45"
+  },
+  {
+    "name": "Patanjali Shampoo",
+    "brand": "Lifebuoy",
+    "category": "Personal Care",
+    "size": "10kg",
+    "price": 763,
+    "sku": "PER-PATANJ-46"
+  },
+  {
+    "name": "Kurkure Masala Munch",
+    "brand": "Lays",
+    "category": "Snacks",
+    "size": "250ml",
+    "price": 427,
+    "sku": "SNA-KURKUR-47"
+  },
+  {
+    "name": "Lifebuoy Soap",
+    "brand": "Patanjali",
+    "category": "Personal Care",
+    "size": "20pcs",
+    "price": 690,
+    "sku": "PER-LIFEBU-48"
+  },
+  {
+    "name": "Soan Papdi",
+    "brand": "Lays",
+    "category": "Snacks",
+    "size": "5kg",
+    "price": 326,
+    "sku": "SNA-SOANPA-49"
+  },
+  {
+    "name": "Frooti",
+    "brand": "Pepsi",
+    "category": "Beverages",
+    "size": "250ml",
+    "price": 407,
+    "sku": "BEV-FROOTI-50"
+  },
+  {
+    "name": "Ariel Powder",
+    "brand": "Nirma",
+    "category": "Cleaning",
+    "size": "5kg",
+    "price": 584,
+    "sku": "CLE-ARIELP-51"
+  },
+  {
+    "name": "Coca-Cola",
+    "brand": "Red Bull",
+    "category": "Beverages",
+    "size": "100g",
+    "price": 593,
+    "sku": "BEV-COCA-C-52"
+  },
+  {
+    "name": "Amul Milk",
+    "brand": "Nestle",
+    "category": "Dairy",
+    "size": "1L",
+    "price": 26,
+    "sku": "DAI-AMULMI-53"
+  },
+  {
+    "name": "Haldiram Bhujia",
+    "brand": "Bingo",
+    "category": "Snacks",
+    "size": "5L",
+    "price": 13,
+    "sku": "SNA-HALDIR-54"
+  },
+  {
+    "name": "Amul Butter",
+    "brand": "Britannia",
+    "category": "Dairy",
+    "size": "1kg",
+    "price": 445,
+    "sku": "DAI-AMULBU-55"
+  },
+  {
+    "name": "Besan",
+    "brand": "Daawat",
+    "category": "Grocery",
+    "size": "500g",
+    "price": 453,
+    "sku": "GRO-BESAN-56"
+  },
+  {
+    "name": "Amul Milk",
+    "brand": "Amul",
+    "category": "Dairy",
+    "size": "100g",
+    "price": 989,
+    "sku": "DAI-AMULMI-57"
+  },
+  {
+    "name": "Amul Cheese",
+    "brand": "Britannia",
+    "category": "Dairy",
+    "size": "250ml",
+    "price": 165,
+    "sku": "DAI-AMULCH-58"
+  },
+  {
+    "name": "Amul Milk",
+    "brand": "Gowardhan",
+    "category": "Dairy",
+    "size": "20pcs",
+    "price": 159,
+    "sku": "DAI-AMULMI-59"
+  },
+  {
+    "name": "Masoor Dal",
+    "brand": "Fortune",
+    "category": "Grocery",
+    "size": "5kg",
+    "price": 791,
+    "sku": "GRO-MASOOR-60"
+  },
+  {
+    "name": "Toor Dal",
+    "brand": "Fortune",
+    "category": "Grocery",
+    "size": "5kg",
+    "price": 107,
+    "sku": "GRO-TOORDA-61"
+  },
+  {
+    "name": "Amul Butter",
+    "brand": "Gowardhan",
+    "category": "Dairy",
+    "size": "2kg",
+    "price": 567,
+    "sku": "DAI-AMULBU-62"
+  },
+  {
+    "name": "Lizol Floor Cleaner",
+    "brand": "Surf Excel",
+    "category": "Cleaning",
+    "size": "2L",
+    "price": 395,
+    "sku": "CLE-LIZOLF-63"
+  },
+  {
+    "name": "Parle-G Biscuits",
+    "brand": "Parle",
+    "category": "Snacks",
+    "size": "5L",
+    "price": 304,
+    "sku": "SNA-PARLE--64"
+  },
+  {
+    "name": "Maaza",
+    "brand": "Red Bull",
+    "category": "Beverages",
+    "size": "1kg",
+    "price": 276,
+    "sku": "BEV-MAAZA-65"
+  },
+  {
+    "name": "Surf Excel Detergent",
+    "brand": "Lizol",
+    "category": "Cleaning",
+    "size": "2kg",
+    "price": 795,
+    "sku": "CLE-SURFEX-66"
+  },
+  {
+    "name": "Mother Dairy Curd",
+    "brand": "Nestle",
+    "category": "Dairy",
+    "size": "2L",
+    "price": 542,
+    "sku": "DAI-MOTHER-67"
+  },
+  {
+    "name": "Amul Cheese",
+    "brand": "Nandini",
+    "category": "Dairy",
+    "size": "10pcs",
+    "price": 636,
+    "sku": "DAI-AMULCH-68"
+  },
+  {
+    "name": "Dettol Soap",
+    "brand": "Dabur",
+    "category": "Personal Care",
+    "size": "500ml",
+    "price": 389,
+    "sku": "PER-DETTOL-69"
+  },
+  {
+    "name": "Sunflower Oil",
+    "brand": "Tata",
+    "category": "Grocery",
+    "size": "500g",
+    "price": 399,
+    "sku": "GRO-SUNFLO-70"
+  },
+  {
+    "name": "Ariel Powder",
+    "brand": "Nirma",
+    "category": "Cleaning",
+    "size": "1kg",
+    "price": 224,
+    "sku": "CLE-ARIELP-71"
+  },
+  {
+    "name": "Parle-G Biscuits",
+    "brand": "Britannia",
+    "category": "Snacks",
+    "size": "5kg",
+    "price": 761,
+    "sku": "SNA-PARLE--72"
+  },
+  {
+    "name": "Good Day Cookies",
+    "brand": "Bingo",
+    "category": "Snacks",
+    "size": "10kg",
+    "price": 492,
+    "sku": "SNA-GOODDA-73"
+  },
+  {
+    "name": "Parle-G Biscuits",
+    "brand": "Lays",
+    "category": "Snacks",
+    "size": "100g",
+    "price": 551,
+    "sku": "SNA-PARLE--74"
+  },
+  {
+    "name": "Basmati Rice",
+    "brand": "24 Mantra",
+    "category": "Grocery",
+    "size": "500ml",
+    "price": 829,
+    "sku": "GRO-BASMAT-75"
+  },
+  {
+    "name": "Sprite",
+    "brand": "Maaza",
+    "category": "Beverages",
+    "size": "20pcs",
+    "price": 478,
+    "sku": "BEV-SPRITE-76"
+  },
+  {
+    "name": "Harpic Toilet Cleaner",
+    "brand": "Nirma",
+    "category": "Cleaning",
+    "size": "10kg",
+    "price": 31,
+    "sku": "CLE-HARPIC-77"
+  },
+  {
+    "name": "Soan Papdi",
+    "brand": "Parle",
+    "category": "Snacks",
+    "size": "5kg",
+    "price": 295,
+    "sku": "SNA-SOANPA-78"
+  },
+  {
+    "name": "Lizol Floor Cleaner",
+    "brand": "Harpic",
+    "category": "Cleaning",
+    "size": "250ml",
+    "price": 10,
+    "sku": "CLE-LIZOLF-79"
+  },
+  {
+    "name": "Ariel Powder",
+    "brand": "Harpic",
+    "category": "Cleaning",
+    "size": "5L",
+    "price": 908,
+    "sku": "CLE-ARIELP-80"
+  },
+  {
+    "name": "Soan Papdi",
+    "brand": "Britannia",
+    "category": "Snacks",
+    "size": "250ml",
+    "price": 366,
+    "sku": "SNA-SOANPA-81"
+  },
+  {
+    "name": "Parle-G Biscuits",
+    "brand": "Parle",
+    "category": "Snacks",
+    "size": "5L",
+    "price": 918,
+    "sku": "SNA-PARLE--82"
+  },
+  {
+    "name": "Soan Papdi",
+    "brand": "Lays",
+    "category": "Snacks",
+    "size": "5L",
+    "price": 708,
+    "sku": "SNA-SOANPA-83"
+  },
+  {
+    "name": "Closeup Gel",
+    "brand": "Dabur",
+    "category": "Personal Care",
+    "size": "5L",
+    "price": 947,
+    "sku": "PER-CLOSEU-84"
+  },
+  {
+    "name": "Parle-G Biscuits",
+    "brand": "Britannia",
+    "category": "Snacks",
+    "size": "20pcs",
+    "price": 281,
+    "sku": "SNA-PARLE--85"
+  },
+  {
+    "name": "Red Bull",
+    "brand": "Coca-Cola",
+    "category": "Beverages",
+    "size": "500ml",
+    "price": 130,
+    "sku": "BEV-REDBUL-86"
+  },
+  {
+    "name": "Haldiram Bhujia",
+    "brand": "Lays",
+    "category": "Snacks",
+    "size": "100g",
+    "price": 804,
+    "sku": "SNA-HALDIR-87"
+  },
+  {
+    "name": "Sunflower Oil",
+    "brand": "24 Mantra",
+    "category": "Grocery",
+    "size": "1L",
+    "price": 905,
+    "sku": "GRO-SUNFLO-88"
+  },
+  {
+    "name": "Appy Fizz",
+    "brand": "Coca-Cola",
+    "category": "Beverages",
+    "size": "20pcs",
+    "price": 809,
+    "sku": "BEV-APPYFI-89"
+  },
+  {
+    "name": "Coca-Cola",
+    "brand": "Pepsi",
+    "category": "Beverages",
+    "size": "10kg",
+    "price": 757,
+    "sku": "BEV-COCA-C-90"
+  },
+  {
+    "name": "Clinic Plus Shampoo",
+    "brand": "Closeup",
+    "category": "Personal Care",
+    "size": "20pcs",
+    "price": 749,
+    "sku": "PER-CLINIC-91"
+  },
+  {
+    "name": "Kurkure Masala Munch",
+    "brand": "Parle",
+    "category": "Snacks",
+    "size": "200g",
+    "price": 721,
+    "sku": "SNA-KURKUR-92"
+  },
+  {
+    "name": "Sugar",
+    "brand": "Fortune",
+    "category": "Grocery",
+    "size": "20pcs",
+    "price": 856,
+    "sku": "GRO-SUGAR-93"
+  },
+  {
+    "name": "Clinic Plus Shampoo",
+    "brand": "Patanjali",
+    "category": "Personal Care",
+    "size": "500g",
+    "price": 261,
+    "sku": "PER-CLINIC-94"
+  },
+  {
+    "name": "Nestle Milkmaid",
+    "brand": "Nestle",
+    "category": "Dairy",
+    "size": "250ml",
+    "price": 625,
+    "sku": "DAI-NESTLE-95"
+  },
+  {
+    "name": "Soan Papdi",
+    "brand": "Britannia",
+    "category": "Snacks",
+    "size": "2L",
+    "price": 327,
+    "sku": "SNA-SOANPA-96"
+  },
+  {
+    "name": "Parle-G Biscuits",
+    "brand": "Haldiram's",
+    "category": "Snacks",
+    "size": "1kg",
+    "price": 505,
+    "sku": "SNA-PARLE--97"
+  },
+  {
+    "name": "Amul Cheese",
+    "brand": "Amul",
+    "category": "Dairy",
+    "size": "1L",
+    "price": 873,
+    "sku": "DAI-AMULCH-98"
+  },
+  {
+    "name": "Colgate Toothpaste",
+    "brand": "Colgate",
+    "category": "Personal Care",
+    "size": "10pcs",
+    "price": 269,
+    "sku": "PER-COLGAT-99"
+  },
+  {
+    "name": "Pepsi",
+    "brand": "Red Bull",
+    "category": "Beverages",
+    "size": "2L",
+    "price": 325,
+    "sku": "BEV-PEPSI-100"
+  },
+  {
+    "name": "Lizol Floor Cleaner",
+    "brand": "Wheel",
+    "category": "Cleaning",
+    "size": "100g",
+    "price": 529,
+    "sku": "CLE-LIZOLF-101"
+  },
+  {
+    "name": "Sugar",
+    "brand": "India Gate",
+    "category": "Grocery",
+    "size": "5kg",
+    "price": 268,
+    "sku": "GRO-SUGAR-102"
+  },
+  {
+    "name": "Lizol Floor Cleaner",
+    "brand": "Wheel",
+    "category": "Cleaning",
+    "size": "10kg",
+    "price": 194,
+    "sku": "CLE-LIZOLF-103"
+  },
+  {
+    "name": "Mother Dairy Curd",
+    "brand": "Nestle",
+    "category": "Dairy",
+    "size": "5kg",
+    "price": 596,
+    "sku": "DAI-MOTHER-104"
+  },
+  {
+    "name": "Kurkure Masala Munch",
+    "brand": "Britannia",
+    "category": "Snacks",
+    "size": "20pcs",
+    "price": 849,
+    "sku": "SNA-KURKUR-105"
+  },
+  {
+    "name": "Appy Fizz",
+    "brand": "Red Bull",
+    "category": "Beverages",
+    "size": "500g",
+    "price": 72,
+    "sku": "BEV-APPYFI-106"
+  },
+  {
+    "name": "Parle-G Biscuits",
+    "brand": "Lays",
+    "category": "Snacks",
+    "size": "10pcs",
+    "price": 644,
+    "sku": "SNA-PARLE--107"
+  },
+  {
+    "name": "Amul Butter",
+    "brand": "Gowardhan",
+    "category": "Dairy",
+    "size": "100g",
+    "price": 169,
+    "sku": "DAI-AMULBU-108"
+  },
+  {
+    "name": "Coca-Cola",
+    "brand": "Frooti",
+    "category": "Beverages",
+    "size": "10pcs",
+    "price": 157,
+    "sku": "BEV-COCA-C-109"
+  },
+  {
+    "name": "Good Day Cookies",
+    "brand": "Lays",
+    "category": "Snacks",
+    "size": "100g",
+    "price": 149,
+    "sku": "SNA-GOODDA-110"
+  },
+  {
+    "name": "Tropicana Juice",
+    "brand": "Frooti",
+    "category": "Beverages",
+    "size": "250ml",
+    "price": 277,
+    "sku": "BEV-TROPIC-111"
+  },
+  {
+    "name": "Maaza",
+    "brand": "Coca-Cola",
+    "category": "Beverages",
+    "size": "5kg",
+    "price": 780,
+    "sku": "BEV-MAAZA-112"
+  },
+  {
+    "name": "Rava",
+    "brand": "Tata",
+    "category": "Grocery",
+    "size": "2L",
+    "price": 712,
+    "sku": "GRO-RAVA-113"
+  },
+  {
+    "name": "Tropicana Juice",
+    "brand": "Sprite",
+    "category": "Beverages",
+    "size": "500g",
+    "price": 888,
+    "sku": "BEV-TROPIC-114"
+  },
+  {
+    "name": "Moong Dal",
+    "brand": "Tata",
+    "category": "Grocery",
+    "size": "2L",
+    "price": 245,
+    "sku": "GRO-MOONGD-115"
+  },
+  {
+    "name": "Gowardhan Ghee",
+    "brand": "Nestle",
+    "category": "Dairy",
+    "size": "500ml",
+    "price": 302,
+    "sku": "DAI-GOWARD-116"
+  },
+  {
+    "name": "Amul Butter",
+    "brand": "Nandini",
+    "category": "Dairy",
+    "size": "500ml",
+    "price": 793,
+    "sku": "DAI-AMULBU-117"
+  },
+  {
+    "name": "Amul Butter",
+    "brand": "Nestle",
+    "category": "Dairy",
+    "size": "5kg",
+    "price": 353,
+    "sku": "DAI-AMULBU-118"
+  },
+  {
+    "name": "Clinic Plus Shampoo",
+    "brand": "Lifebuoy",
+    "category": "Personal Care",
+    "size": "20pcs",
+    "price": 350,
+    "sku": "PER-CLINIC-119"
+  },
+  {
+    "name": "Poha",
+    "brand": "Aashirvaad",
+    "category": "Grocery",
+    "size": "5L",
+    "price": 913,
+    "sku": "GRO-POHA-120"
+  }
+]

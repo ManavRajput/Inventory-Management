@@ -1,0 +1,17 @@
+# Environment files
+.env
+
+# Local SQLite database
+offline.db
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VSCode settings (optional)
+.vscode/
+
+# macOS files (optional)
+.DS_Store
