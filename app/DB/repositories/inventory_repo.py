@@ -1,4 +1,5 @@
-﻿import uuid
+﻿from optparse import Option
+import uuid
 from typing import Optional, List, Dict, Any
 
 from app.DB.Sql.db_manager import AsyncDBManager
@@ -14,7 +15,7 @@ class InventoryRepository:
     #     - If it exists, it updates the product and returns its id.
     #     - If not, it inserts a new product with a generated UUID and returns the new id.
     # The function always returns the id of the upserted product as a string.
-    async def upsert_product(self, sku: str, name: str, variety: Optional[str], price: float,
+    async def upsert_product(self, sku: str, name: str, variety: Optional[str], price: float, quantity: float,
                              attributes: Optional[dict] = None, is_active: bool = True) -> str:
         attributes = attributes or {}
         if self.db.is_postgres():
@@ -25,26 +26,27 @@ class InventoryRepository:
             SET name = EXCLUDED.name,
                 variety = EXCLUDED.variety,
                 price = EXCLUDED.price,
+                quantity = EXCLUDED.quantity,
                 attributes = EXCLUDED.attributes,
                 is_active = EXCLUDED.is_active
             RETURNING id
             """
-            rows = await self.db.execute_query(query, (sku, name, variety, price, attributes, is_active), commit=True)
+            rows = await self.db.execute_query(query, (sku, name, variety, price, quantity, attributes, is_active), commit=True)
             return rows[0]["id"]
         else:
             # SQLite: need to manage IDs ourselves
             row = await self.db.execute_query("SELECT id FROM products WHERE sku = ?", (sku,))
             if row:
                 await self.db.execute_query(
-                    "UPDATE products SET name=?, variety=?, price=?, attributes=?, is_active=? WHERE sku=?",
-                    (name, variety, price, json_dumps(attributes), 1 if is_active else 0, sku),
+                    "UPDATE products SET name=?, variety=?, price=?, qunatity=?, attributes=?, is_active=? WHERE sku=?",
+                    (name, variety, price, quantity, json_dumps(attributes), 1 if is_active else 0, sku),
                     commit=True,
                 )
                 return row[0]["id"]
             new_id = str(uuid.uuid4())
             await self.db.execute_query(
-                "INSERT INTO products (id, sku, name, variety, price, attributes, is_active) VALUES (?, ?, ?, ?, ?, ?, ?)",
-                (new_id, sku, name, variety, price, json_dumps(attributes), 1 if is_active else 0),
+                "INSERT INTO products (id, sku, name, variety, price, quantity, attributes, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                (new_id, sku, name, variety, price, quantity, json_dumps(attributes), 1 if is_active else 0),
                 commit=True,
             )
             return new_id
@@ -58,12 +60,12 @@ class InventoryRepository:
             it.setdefault("is_active", True)
 
         if self.db.is_postgres():
-            cols = ("sku", "name", "variety", "price", "attributes", "is_active")
+            cols = ("sku", "name", "variety", "price","quantity","tributes", "is_active")
             placeholders = ", ".join(["(%s, %s, %s, %s, %s::jsonb, %s)"] * len(items))
             flat = []
             for it in items:
                 flat.extend([
-                    it["sku"], it["name"], it.get("variety"), it["price"], it["attributes"], it.get("is_active", True)
+                    it["sku"], it["name"], it.get("variety"), it["price"],it["quantity"] ,it["attributes"], it.get("is_active", True)
                 ])
             sql = f"""
             INSERT INTO products ({", ".join(cols)})
@@ -72,6 +74,7 @@ class InventoryRepository:
             SET name = EXCLUDED.name,
                 variety = EXCLUDED.variety,
                 price = EXCLUDED.price,
+                quantity = EXCLUDED.quantity,
                 attributes = EXCLUDED.attributes,
                 is_active = EXCLUDED.is_active
             RETURNING id, sku
@@ -86,12 +89,13 @@ class InventoryRepository:
         else:
             # SQLite: per-row UPSERT inside a single transaction
             q = """
-            INSERT INTO products (id, sku, name, variety, price, attributes, is_active)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO products (id, sku, name, variety, price, quantity, attributes, is_active)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(sku) DO UPDATE SET
                 name=excluded.name,
                 variety=excluded.variety,
                 price=excluded.price,
+                quantity = excluded.quantity,
                 attributes=excluded.attributes,
                 is_active=excluded.is_active
             """
@@ -103,7 +107,7 @@ class InventoryRepository:
                         pid = str(uuid.uuid4())
                         cur.execute(
                             q,
-                            (pid, it["sku"], it["name"], it.get("variety"), it["price"], json_dumps(it["attributes"]),
+                            (pid, it["sku"], it["name"], it.get("variety"), it["price"], it["quantity"], json_dumps(it["attributes"]),
                              1 if it.get("is_active", True) else 0),
                         )
                         created.append({"id": pid, "sku": it["sku"]})
@@ -114,7 +118,7 @@ class InventoryRepository:
                     pid = str(uuid.uuid4())
                     cur.execute(
                         q,
-                        (pid, it["sku"], it["name"], it.get("variety"), it["price"], json_dumps(it["attributes"]),
+                        (pid, it["sku"], it["name"], it.get("variety"), it["price"],it["quantity"], json_dumps(it["attributes"]),
                          1 if it.get("is_active", True) else 0),
                     )
                     created.append({"id": pid, "sku": it["sku"]})
@@ -135,10 +139,10 @@ class InventoryRepository:
             rows = await self.db.execute_query(q, (sku, variety, variety))
         return rows[0]["price"] if rows else None
 
-    async def get_stock(self, sku: str, variety: Optional[str] = None) -> Dict[str, Any]:
+    async def get_stock(self, sku: str, variety: Optional[str] = None, name: Optional[str] = None) -> Dict[str, Any]:
         if self.db.is_postgres():
             q = """
-            SELECT p.sku, p.name, p.variety, COALESCE(sv.current_quantity,0) AS quantity
+            SELECT p.sku, p.name, p.variety, COALESCE(sv.quantity,0) AS quantity
             FROM products p
             LEFT JOIN stock_view sv ON sv.product_id = p.id
             WHERE p.sku = %s AND (%s IS NULL OR p.variety = %s)
@@ -146,7 +150,7 @@ class InventoryRepository:
             rows = await self.db.execute_query(q, (sku, variety, variety))
         else:
             q = """
-            SELECT p.sku, p.name, p.variety, COALESCE(sv.current_quantity,0) AS quantity
+            SELECT p.sku, p.name, p.variety, COALESCE(sv.quantity,0) AS quantity
             FROM products p
             LEFT JOIN stock_view sv ON sv.product_id = p.id
             WHERE p.sku = ? AND (? IS NULL OR p.variety = ?)
@@ -170,8 +174,8 @@ class InventoryRepository:
         if self.db.is_postgres():
             q = """
             SELECT p.sku, p.name, p.variety, p.price,
-                   COALESCE(sv.current_quantity,0) AS quantity,
-                   (COALESCE(sv.current_quantity,0) > 0) AS available
+                   COALESCE(sv.quantity,0) AS quantity,
+                   (COALESCE(sv.quantity,0) > 0) AS available
             FROM products p
             LEFT JOIN stock_view sv ON sv.product_id = p.id
             WHERE p.sku = %s AND (%s IS NULL OR p.variety = %s)
@@ -180,8 +184,8 @@ class InventoryRepository:
         else:
             q = """
             SELECT p.sku, p.name, p.variety, p.price,
-                   COALESCE(sv.current_quantity,0) AS quantity,
-                   CASE WHEN COALESCE(sv.current_quantity,0) > 0 THEN 1 ELSE 0 END AS available
+                   COALESCE(sv.quantity,0) AS quantity,
+                   CASE WHEN COALESCE(sv.quantity,0) > 0 THEN 1 ELSE 0 END AS available
             FROM products p
             LEFT JOIN stock_view sv ON sv.product_id = p.id
             WHERE p.sku = ? AND (? IS NULL OR p.variety = ?)
@@ -195,7 +199,7 @@ class InventoryRepository:
             "name": row["name"],
             "variety": row["variety"],
             "price": float(row["price"]),
-            "quantity": int(row["quantity"]),
+            "quantity": float(row["quantity"]),
             "available": bool(row["available"]),
         }
 
@@ -228,9 +232,8 @@ class InventoryRepository:
         # 'query' is the search string used to match product SKU or name (partial match).
         if self.db.is_postgres():
             q = """
-            SELECT p.sku, p.name, p.variety, p.price,
-                   COALESCE(sv.current_quantity,0) AS quantity,
-                   (COALESCE(sv.current_quantity,0) > 0) AS available
+            SELECT p.sku, p.name, p.variety, p.price, AS quantity,
+                   (COALESCE(sv.quantity,0) > 0) AS available
             FROM products p
             LEFT JOIN stock_view sv ON sv.product_id = p.id
             WHERE (p.sku ILIKE %s OR p.name ILIKE %s)
@@ -241,8 +244,8 @@ class InventoryRepository:
         else:
             q = """
             SELECT p.sku, p.name, p.variety, p.price,
-                   COALESCE(sv.current_quantity,0) AS quantity,
-                   CASE WHEN COALESCE(sv.current_quantity,0) > 0 THEN 1 ELSE 0 END AS available
+                   COALESCE(sv.quantity,0) AS quantity,
+                   CASE WHEN COALESCE(sv.quantity,0) > 0 THEN 1 ELSE 0 END AS available
             FROM products p
             LEFT JOIN stock_view sv ON sv.product_id = p.id
             WHERE (p.sku LIKE ? OR p.name LIKE ?)

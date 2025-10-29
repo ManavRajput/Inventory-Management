@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS products (
     name TEXT NOT NULL,
     variety TEXT,
     price REAL NOT NULL CHECK (price >= 0),
+    quantity REAL NOT NULL CHECK (quantity >= 0),
     attributes TEXT DEFAULT '{}',
     is_active INTEGER NOT NULL DEFAULT 1,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,

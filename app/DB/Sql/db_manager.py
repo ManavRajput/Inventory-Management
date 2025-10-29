@@ -150,8 +150,4 @@ class AsyncDBManager:
     def is_postgres(self) -> bool:
         return self.fallback == "postgres"
 
-    @staticmethod
-    def sha256(content: str) -> str:
-        import hashlib
-        return hashlib.sha256(content.encode("utf-8")).hexdigest()
 

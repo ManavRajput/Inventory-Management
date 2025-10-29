@@ -23,27 +23,54 @@ service = InventoryService(db)
 
 
 def csv_to_api_json(file: UploadFile):
-    import csv, io
+    import csv, io, json
     content = file.file.read().decode("utf-8")
     reader = csv.DictReader(io.StringIO(content))
     items = []
+    error_count = 0
 
-    for row in reader:
-        # Map CSV columns to expected dict structure
-        item = {
-            "sku": row.get("sku"),
-            "name": row.get("name"),
-            "variety": row.get("variety"),
-            "price": float(row.get("price", 0)),
-            "attributes": {
-                "brand": row.get("brand"),
-                "color": row.get("color"),
-                "size": row.get("size"),
-            },
-            "is_active": True,
-        }
-        items.append(item)
+    for row_num, row in enumerate(reader, start=2):  # start=2 because header is row 1
+        try:
+            # Parse the JSON string from the 'attribute' column
+            attribute_str = row.get("attribute", "{}")
+            
+            # Clean the attribute string if needed
+            if not attribute_str.startswith("{"):
+                attribute_str = "{" + attribute_str
+            if not attribute_str.endswith("}"):
+                attribute_str = attribute_str + "}"
+            
+            attributes = json.loads(attribute_str)
+            
+            # Validate required fields
+            if not row.get("sku") or not row.get("name"):
+                print(f"Warning: Missing SKU or name in row {row_num}")
+                continue
+            
+            # Map CSV columns to expected dict structure
+            item = {
+                "sku": row.get("sku", "").strip(),
+                "name": row.get("name", "").strip(),
+                "variety": row.get("variety", "").strip(),
+                "price": float(row.get("price", 0)),
+                "quantity":float(row.get("quantity",0)),
+                "attributes": {
+                    "brand": attributes.get("brand", ""),
+                    "color": attributes.get("color", ""),
+                    "material": attributes.get("material", ""),
+                    "size": attributes.get("size", "")
+                },
+                "is_active": True,
+            }
+            items.append(item)
+            
+        except (json.JSONDecodeError, ValueError, KeyError) as e:
+            error_count += 1
+            print(f"Error processing row {row_num}: {e}")
+            print(f"Row data: {row}")
+            continue
 
+    print(f"Successfully processed {len(items)} items. {error_count} errors encountered.")
     return items
 
 
@@ -63,7 +90,7 @@ async def on_shutdown():
 
 @app.post("/products/upsert")
 async def upsert_product(payload: ProductUpsert):
-    pid = await service.ingest_product(payload.sku, payload.name, payload.variety, payload.price, payload.attributes)
+    pid = await service.ingest_product(payload.sku, payload.name, payload.variety, payload.price, payload.quantity, payload.attributes)
     return {"id": pid, "sku": payload.sku}
 
 
@@ -84,6 +111,7 @@ async def upsert_products_batch(
 
     if file:
         items = csv_to_api_json(file)
+        print(items)
     else:
         raise HTTPException(status_code=400, detail="No file found. Please upload a CSV or Excel file.")
 

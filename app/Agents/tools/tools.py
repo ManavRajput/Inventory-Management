@@ -9,7 +9,7 @@ from app.DB.models.schema import (
 from langchain_core.tools import tool
 from typing import Optional, List, Dict, Any
 import uuid
-
+import datetime
 
 db = AsyncDBManager()
 service = InventoryService(db)
@@ -278,5 +278,81 @@ async def compute_order_total(items: List[Dict[str, Any]]) -> dict:
             "error": "calculation_failed",
             "message": f"❌ Failed to calculate total: {str(e)}"
         }
+
+
+@tool
+async def update_inventory(self, items: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """
+        Updates inventory after purchase.
+
+        Args:
+            items: List of dicts - [{'sku': str, 'variety': Optional[str], 'quantity': int, 'sale_price': Optional[float], 'ref_id': Optional[str], 'notes': Optional[str]}]
+
+        Returns:
+            result: {
+                "success": bool,
+                "errors": List[str],
+                "updated": List[Dict[str, Any]]  # List of items successfully updated
+            }
+        """
+        updated = []
+        errors = []
+        for item in items:
+            try:
+                await self.sell_out(
+                    sku=item["sku"],
+                    variety=item.get("variety"),
+                    quantity=item["quantity"],
+                    sale_price=item.get("sale_price"),
+                    ref_id=item.get("ref_id"),
+                    notes=item.get("notes")
+                )
+                updated.append({"sku": item["sku"], "quantity": item["quantity"]})
+            except Exception as e:
+                errors.append(f"{item['sku']}: {str(e)}")
+        return {
+            "success": len(errors) == 0,
+            "errors": errors,
+            "updated": updated
+        }
+
+
+@tool
+async def generate_receipt(order_id, customer, order_items, inventory, payment_status="paid"):
+    """
+    Generates a purchase receipt.
+
+    Args:
+        order_id: str
+        customer: str
+        order_items: List of dicts - [{'sku': str, 'qty': int}]
+        inventory: Dict of inventory data
+        payment_status: str
+
+    Returns:
+        receipt: str
+    """
+    lines = []
+    total = 0
+    for item in order_items:
+        sku = item['sku']
+        qty = item['qty']
+        name = inventory[sku]['name']
+        price = inventory[sku]['price']
+        line_total = price * qty
+        total += line_total
+        lines.append(f"• {name} (SKU: {sku}), ₹{price} × {qty} = ₹{line_total}")
+    receipt = (
+        f"\n🧾 Receipt\n"
+        f"Order ID: {order_id}\n"
+        f"Date: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}\n"
+        f"Customer: {customer}\n"
+        f"{'-'*18}\n"
+        f"Items Purchased:\n" +
+        '\n'.join(lines) +
+        f"\n{'-'*18}\nTotal Amount: ₹{total}\nPayment: {payment_status}\n"
+        "Thank you for shopping with us! 😊\n"
+    )
+    return receipt
 
 

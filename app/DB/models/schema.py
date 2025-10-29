@@ -81,6 +81,11 @@ class ProductUpsert(BaseModel):
         description="Current selling price for this SKU/variety combination.",
         examples=[499.00],
     )
+
+    quantity : float = Field(
+        description= "Quantity of the product",
+        example = [20.00],
+    )
     # 'attributes' is an optional dictionary for storing arbitrary product metadata,
     # such as {"color": "red", "size": "XL"} or {"brand": "Acme", "weight": 1.2}
     attributes: Optional[Dict[str, Any]] = Field(
@@ -97,6 +102,7 @@ class ProductUpsert(BaseModel):
                     "name": "Basic Cotton T-Shirt",
                     "variety": "M / Black",
                     "price": 499.0,
+                    "quantity":20,
                     "attributes": {"brand": "Acme", "color": "Black", "size": "M", "material": "Cotton"},
                 }
             ]
