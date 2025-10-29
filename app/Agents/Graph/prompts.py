@@ -1,6 +1,4 @@
-from langchain_core.prompts.string import PromptTemplateFormat
-from langchain_core.runnables.config import P
-from app.config.llm import llm, llm_with_tools
+from app.config.llm import  llm_with_tools
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 # --- INVENTORY CHATBOT PROMPT ---
